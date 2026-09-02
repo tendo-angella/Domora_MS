@@ -31,3 +31,22 @@ class OrganizationJWTAuthentication(JWTAuthentication):
         request.organization = membership.organization if membership else None
         request.membership = membership
         return user, validated_token
+
+
+from drf_spectacular.extensions import OpenApiAuthenticationExtension
+
+
+class OrganizationJWTAuthenticationScheme(OpenApiAuthenticationExtension):
+    """Tells drf-spectacular how to represent OrganizationJWTAuthentication
+    in the OpenAPI schema — without this, Swagger UI has no "Authorize"
+    button and no way to know this API even needs a Bearer token."""
+
+    target_class = "accounts.authentication.OrganizationJWTAuthentication"
+    name = "jwtAuth"
+
+    def get_security_definition(self, auto_schema):
+        return {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT",
+        }

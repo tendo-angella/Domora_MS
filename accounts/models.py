@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 
+from utils.models_utilities import BaseModel
+
 
 class UserManager(BaseUserManager):
     """Manager for the custom, email-based User model."""
@@ -26,11 +28,10 @@ class UserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
-class User(AbstractBaseUser, PermissionsMixin):
+class User(AbstractBaseUser, PermissionsMixin, BaseModel):
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=100, blank=True)
     last_name = models.CharField(max_length=100, blank=True)
-    is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
 
@@ -50,18 +51,17 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.first_name or self.email
 
 
-class Organization(models.Model):
+class Organization(BaseModel):
     """A single hotel business — the tenant boundary for everything else."""
 
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
-    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
 
 
-class Membership(models.Model):
+class Membership(BaseModel):
     """Links a User to the Organization (hotel) they work for, with a role."""
 
     class Role(models.TextChoices):
@@ -73,7 +73,6 @@ class Membership(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="memberships")
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="memberships")
     role = models.CharField(max_length=20, choices=Role.choices, default=Role.RECEPTIONIST)
-    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         unique_together = ("user", "organization")
