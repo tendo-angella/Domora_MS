@@ -101,3 +101,189 @@ button {
   color: var(--color-text-muted);
   margin-top: 1.5rem;
 }
+
+/* ---------- Auth pages (register / login) ---------- */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.auth-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 440px;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.auth-header .brand {
+  font-size: 2rem;
+  color: var(--color-gold);
+}
+
+.auth-header p {
+  color: var(--color-text-muted);
+  margin: 0.4rem 0 0;
+  font-size: 0.95rem;
+}
+
+.field {
+  margin-bottom: 1.1rem;
+}
+
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  transition: border-color 0.15s;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.field-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.field-row .field {
+  flex: 1;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background-color 0.15s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.alert-error {
+  background-color: rgba(217, 108, 87, 0.12);
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+  padding: 0.7rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  margin-bottom: 1.2rem;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 1.5rem 0;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
+  margin-bottom: 0.9rem;
+}
+
+/* ---------- Dashboard ---------- */
+.dashboard {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.dashboard-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.dashboard-head h1 {
+  font-size: 2rem;
+  color: var(--color-gold);
+}
+
+.dashboard-head p {
+  color: var(--color-text-muted);
+  margin: 0.3rem 0 0;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+.role-badge {
+  display: inline-block;
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  color: var(--color-gold);
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: var(--color-text-muted);
+}
