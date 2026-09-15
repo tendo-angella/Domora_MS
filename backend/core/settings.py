@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_spectacular',
+    "corsheaders",
     'utils',
     'accounts',
 ]
@@ -31,6 +32,7 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'accounts.User'
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -109,3 +111,13 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5175",
+    "http://127.0.0.1:5175",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
+
+# If you are sending credentials (cookies, HTTP Auth, etc.)
+CORS_ALLOW_CREDENTIALS = True
