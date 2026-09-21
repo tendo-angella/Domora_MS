@@ -46,6 +46,11 @@ export const api = {
   me: () => request('/accounts/me/'),
   listStaff: () => request('/accounts/staff/'),
   addStaff: (payload) => request('/accounts/staff/', { method: 'POST', body: payload }),
+
+  listRooms: () => request('/rooms/'),
+  addRoom: (payload) => request('/rooms/', { method: 'POST', body: payload }),
+  updateRoom: (id, payload) => request(`/rooms/${id}/`, { method: 'PATCH', body: payload }),
+  deleteRoom: (id) => request(`/rooms/${id}/`, { method: 'DELETE' }),
   getTokens,
   setTokens,
 }

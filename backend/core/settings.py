@@ -25,8 +25,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_spectacular',
     "corsheaders",
-    'utils',
     'accounts',
+    'rooms',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'

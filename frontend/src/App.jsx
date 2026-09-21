@@ -3,6 +3,7 @@ import { useAuth } from './context/AuthContext'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Rooms from './pages/Rooms'
 
 function App() {
   const { user, loading } = useAuth()
@@ -32,7 +33,12 @@ function App() {
         path="*"
         element={<Navigate to={user ? '/dashboard' : '/login'} replace />}
       />
+      <Route
+        path="/rooms"
+        element={user ? <Rooms /> : <Navigate to="/login" replace />}
+      />
     </Routes>
+    
   )
 }
 

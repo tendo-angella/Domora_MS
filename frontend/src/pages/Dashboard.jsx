@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { api } from '../api/Client'
 import { useAuth } from '../context/AuthContext'
+import { Link } from 'react-router-dom'
 
 function initials(name, email) {
   if (name) return name.charAt(0).toUpperCase()
@@ -99,6 +100,7 @@ function Dashboard() {
   const { user, organization, role, logout } = useAuth()
   const [staff, setStaff] = useState([])
   const [staffLoading, setStaffLoading] = useState(true)
+  const [roomCount, setRoomCount] = useState(null)
   const [showAddForm, setShowAddForm] = useState(false)
 
   const canManageStaff = role === 'owner' || role === 'manager'
